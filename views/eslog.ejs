@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<% if (vizualiziraj) { %>
+<% if (vizualiziraj) { console.log(uporabnik);
+%>
 <?xml-stylesheet type="text/xsl" href="../eSLOG/vizualizacija.xslt"?>
 <% } %>
 <IzdaniRacunEnostavni xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xds="http://uri.etsi.org/01903/v1.1.1#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.gzs.si/e-poslovanje/sheme/eSLOG_1-6_EnostavniRacun.xsd">
@@ -173,19 +174,19 @@
 			<NazivNaslovPodjetja>
 				<VrstaPartnerja>BY</VrstaPartnerja>
 				<NazivPartnerja>
-					<NazivPartnerja1>Univerza v Ljubljani, </NazivPartnerja1>
-					<NazivPartnerja2>Fakulteta za računalništvo in informatiko</NazivPartnerja2>
-					<NazivPartnerja3>Laboratorij za </NazivPartnerja3>
-					<NazivPartnerja4>podatkovne tehnologije</NazivPartnerja4>
+					<NazivPartnerja1><% uporabnik.FirstName + ' ' + uporabnik.LastName %> </NazivPartnerja1>
+					<NazivPartnerja2><% uporabnik.Company %></NazivPartnerja2>
+					<!--<NazivPartnerja3>Laboratorij za </NazivPartnerja3>
+					<NazivPartnerja4>podatkovne tehnologije</NazivPartnerja4>-->
 				</NazivPartnerja>
 				<Ulica>
-					<Ulica1>Večna pot </Ulica1>
-					<Ulica2>113</Ulica2>
-					<Ulica3>nadstropje 2, kabinet R2.49</Ulica3>
+					<Ulica1> <% uporabnik.Address %> </Ulica1>
+					<!--<Ulica2>113</Ulica2>
+					<Ulica3>nadstropje 2, kabinet R2.49</Ulica3>-->
 				</Ulica>
-				<Kraj>Ljubljana</Kraj>
-				<NazivDrzave>Slovenija</NazivDrzave>
-				<PostnaStevilka>1000</PostnaStevilka>
+				<Kraj> <% uporabnik.City %></Kraj>
+				<NazivDrzave><% uporabnik.Country %></NazivDrzave>
+				<PostnaStevilka><% uporabnik.PostalCode %></PostnaStevilka>
 				<KodaDrzave>SI</KodaDrzave>
 			</NazivNaslovPodjetja>
 			<FinancniPodatkiPodjetja>
@@ -210,14 +211,14 @@
 			</ReferencniPodatkiPodjetja>
 			<KontaktiPodjetja>
 				<KontaktnaOseba>
-					<ImeOsebe>Dejan Lavbič</ImeOsebe>
+					<ImeOsebe><% uporabnik.FirstName + ' ' + uporabnik.LastName + ' (' + uporabnik.Email + ')' %></ImeOsebe>
 				</KontaktnaOseba>
 				<Komunikacije>
-					<StevilkaKomunikacije>38614798000</StevilkaKomunikacije>
+					<StevilkaKomunikacije><% uporabnik.Phone %></StevilkaKomunikacije>
 					<VrstaKomunikacije>TE</VrstaKomunikacije>
 				</Komunikacije>
 				<Komunikacije>
-					<StevilkaKomunikacije>38612419350</StevilkaKomunikacije>
+					<StevilkaKomunikacije><% uporabnik.Fax %></StevilkaKomunikacije>
 					<VrstaKomunikacije>FX</VrstaKomunikacije>
 				</Komunikacije>
 			</KontaktiPodjetja>
