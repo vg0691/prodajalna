@@ -183,11 +183,11 @@ streznik.get('/izpisiRacun/:oblika', function(zahteva, odgovor) {
       try {
         pb.all("SELECT Customer.* FROM Customer \
                 WHERE Customer.CustomerId = " + zahteva.session.idOfUser,
-        function(napaka, vrstice) {
+        function(napaka, uporabnik) {
           odgovor.setHeader('content-type', 'text/xml');
           odgovor.render('eslog', {
           vizualiziraj: zahteva.params.oblika == 'html' ? true : false,
-          uporabnik: vrstice[0],
+          uporabnik: uporabnik[0],
           postavkeRacuna: pesmi
           })
         })
