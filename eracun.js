@@ -156,7 +156,7 @@ streznik.post('/izpisiRacunBaza', function(zahteva, odgovor) {
   form.parse(zahteva, function (napaka1, polja, datoteke) {
     var idRacuna = polja.seznamRacunov;
        strankaIzRacuna(idRacuna, function(napaka, uporabnik) {
-         console.log(uporabnik[0]);
+         //console.log(uporabnik[0].FirstName);
         odgovor.setHeader('content-type', 'text/xml');
         odgovor.render('eslog', {
         vizualiziraj: true,
